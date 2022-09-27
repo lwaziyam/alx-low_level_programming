@@ -1,23 +1,23 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "main.h"
 
 /**
- * main - Prints the alphabet without q and e.
- *
- * Return: Always 0 (Success)
+ * _strpbrk - searches a string for any of a set of bytes.
+ * @s: first string.
+ * @accept: second string.
+ * Return: a pointer to the byte in s that matches one of the
+ * bytes in accept, or NULL if no such byte is found.
  */
-int main(void)
+char *_strpbrk(char *s, char *accept)
 {
-	int i;
+	unsigned int i, j;
 
-	for (i = 97; i < 123; i++)
+	for (i = 0; *(s + i) != '\0'; i++)
 	{
-		if (i != 101 && i != 113)
+		for (j = 0; *(accept + j) != '\0'; j++)
 		{
-			putchar(i);
+			if (*(s + i) == *(accept + j))
+				return (s + i);
 		}
 	}
-	putchar('\n');
-	return (0);
+	return ('\0');
 }
